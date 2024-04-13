@@ -1,10 +1,15 @@
 import Item from '@/app/components/todo/Item';
+import { TodoType } from '@/types/types';
+import { fetchTodo } from '@/utils/supabase/actions';
 import { Box } from '@chakra-ui/react';
 
-const Todo = () => {
+const Todo = async () => {
+  const todos: TodoType[] = await fetchTodo();
   return (
-    <Box w='80%'>
-      <Item />
+    <Box pt='6'>
+      {todos!.map((todo) => (
+        <Item key={todo.id} todo={todo} />
+      ))}
     </Box>
   );
 };

@@ -36,7 +36,7 @@ export default function LoginForm() {
   } = methods;
 
   const onSubmit = async (params: LoginFormType) => {
-    login(params);
+    await login(params);
   };
 
   return (

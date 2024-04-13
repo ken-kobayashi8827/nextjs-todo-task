@@ -1,6 +1,14 @@
-import { Button, Flex, Heading } from '@chakra-ui/react';
+'use client';
+
+import { logout } from '@/utils/supabase/actions';
+import { Button, Flex, Heading, HStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 export default function Header() {
+  const handleLogout = async () => {
+    await logout();
+  };
+
   return (
     <Flex
       as='header'
@@ -13,7 +21,14 @@ export default function Header() {
       <Heading size='lg' color='white'>
         【課題】Nextjs Todoリスト
       </Heading>
-      <Button colorScheme='red'>ログアウト</Button>
+      <HStack>
+        <Button as={NextLink} href='/todo/create' colorScheme='blue'>
+          TODO作成
+        </Button>
+        <Button colorScheme='red' onClick={handleLogout}>
+          ログアウト
+        </Button>
+      </HStack>
     </Flex>
   );
 }

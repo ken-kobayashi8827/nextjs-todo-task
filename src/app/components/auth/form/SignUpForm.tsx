@@ -49,7 +49,7 @@ export default function SignUpForm() {
   } = methods;
 
   const onSubmit = async (params: SignUpFormType) => {
-    signup(params);
+    await signup(params);
   };
 
   return (

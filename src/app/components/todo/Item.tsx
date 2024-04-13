@@ -1,24 +1,41 @@
+import { TodoType } from '@/types/types';
 import { Box, Button, Heading, HStack, Text, VStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import DeleteButton from './button/DeleteButton';
+import StatusSelect from './select/StatusSelect';
 
-export default function Item() {
+type PropsType = {
+  todo: TodoType;
+};
+
+export default function Item({ todo }: PropsType) {
   return (
-    <Box w='100%' pb='3' pl='3' pr='3' borderBottom='1px solid black'>
+    <Box w='100%' pb='3' pl='3' pr='3' mb='3' borderBottom='1px solid black'>
       <HStack>
-        <Heading fontSize='xl' fontWeight='bold' p='3' w='100%'>
-          テスト
+        <Heading
+          as={NextLink}
+          href={`todo/${todo.id}`}
+          fontSize='2xl'
+          fontWeight='bold'
+          p='3'
+          w='100%'
+        >
+          {todo.title}
         </Heading>
-        <Button w='15%' colorScheme='red'>
-          削除
-        </Button>
-        <Button w='15%' colorScheme='blue'>
+        <Text fontSize='lg' w='100%' textAlign='right' mr='3'>
+          終了日時: {todo.end_date.slice(0, 10)}
+        </Text>
+        <StatusSelect todoId={todo.id} todoStatus={todo.status} />
+        <DeleteButton todoId={todo.id} />
+        <Button
+          as={NextLink}
+          href={`todo/${todo.id}/edit`}
+          w='15%'
+          colorScheme='blue'
+        >
           編集
         </Button>
       </HStack>
-      <VStack alignItems='start' mb='3'>
-        <Text fontSize='lg' w='100%' pl='3'>
-          テスト詳細
-        </Text>
-      </VStack>
     </Box>
   );
 }

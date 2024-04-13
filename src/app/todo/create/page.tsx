@@ -1,3 +1,5 @@
+import CreateForm from '@/app/components/todo/form/CreateForm';
+
 export default function CreateTodo() {
-  return <h1>Todo作成ページ</h1>;
+  return <CreateForm />;
 }
