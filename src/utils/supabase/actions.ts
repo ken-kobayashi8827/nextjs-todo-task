@@ -7,7 +7,8 @@ import { createClient } from '@/utils/supabase/server';
 import { SignUpFormType } from '@/app/components/auth/form/SignUpForm';
 import { LoginFormType } from '@/app/components/auth/form/LoginForm';
 import { CreateFormType } from '@/app/components/todo/form/CreateForm';
-import { EditFormType } from '@/app/components/todo/form/EdutForm';
+import { EditFormType } from '@/app/components/todo/form/EditForm';
+import { convertSortToQuery } from '../select';
 
 const TODO_TABLE = 'todos';
 
@@ -87,11 +88,15 @@ export async function createTodo(formData: CreateFormType) {
   redirect('/todo');
 }
 
-export async function fetchTodo() {
+export async function fetchTodo(sort: string) {
   noStore();
+  const query = convertSortToQuery[sort];
   try {
     const supabase = createClient();
-    const { data: todoData, error } = await supabase.from(TODO_TABLE).select();
+    const { data: todoData, error } = await supabase
+      .from(TODO_TABLE)
+      .select()
+      .order(query, { ascending: query !== 'created_at' ? true : false });
     return todoData;
   } catch (error) {
     redirect('/error');

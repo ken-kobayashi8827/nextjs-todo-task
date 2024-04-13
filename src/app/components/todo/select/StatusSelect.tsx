@@ -1,6 +1,6 @@
 'use client';
 
-import { options } from '@/utils/select-status';
+import { todoStatusOptions } from '@/utils/select';
 import { changeTodoStatus } from '@/utils/supabase/actions';
 import { Select } from '@chakra-ui/react';
 
@@ -23,7 +23,7 @@ export default function StatusSelect({ todoId, todoStatus }: PropsType) {
         handleChangeSelect(parseInt(e.target.value))
       }
     >
-      {options.map((option) => (
+      {todoStatusOptions.map((option) => (
         <option key={option.label} value={option.value}>
           {option.label}
         </option>

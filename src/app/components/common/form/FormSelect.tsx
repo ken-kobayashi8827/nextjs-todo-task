@@ -1,11 +1,11 @@
-import { StatusOptions } from '@/types/types';
+import { StatusOptionsType } from '@/types/types';
 import { Box, FormControl, Select } from '@chakra-ui/react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 type FormSelectProps = {
   label: string;
   register?: UseFormRegisterReturn;
-  options: StatusOptions[];
+  options: StatusOptionsType[];
 };
 
 export const FormSelect = ({ label, register, options }: FormSelectProps) => {

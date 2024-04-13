@@ -7,7 +7,7 @@ import { Box, Button, Flex, FormControl, Select } from '@chakra-ui/react';
 import { FormInput } from '../../common/form/FormInput';
 import NextLink from 'next/link';
 import { createTodo } from '@/utils/supabase/actions';
-import { options } from '@/utils/select-status';
+import { todoStatusOptions } from '@/utils/select';
 import { FormSelect } from '../../common/form/FormSelect';
 
 const CreateFormSchema = z.object({
@@ -67,7 +67,7 @@ export default function CreateForm() {
             <FormSelect
               label='進捗'
               register={register('status')}
-              options={options}
+              options={todoStatusOptions}
             />
             <FormInput
               type='date'

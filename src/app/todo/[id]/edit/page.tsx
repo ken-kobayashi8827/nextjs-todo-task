@@ -1,4 +1,4 @@
-import EditForm from '@/app/components/todo/form/EdutForm';
+import EditForm from '@/app/components/todo/form/EditForm';
 import { TodoType } from '@/types/types';
 import { fetchTodoById } from '@/utils/supabase/actions';
 

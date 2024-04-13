@@ -9,13 +9,22 @@ export type TodoType = {
   updated_at: string;
 };
 
-export type StatusOptions = {
+export type StatusOptionsType = {
   label: string;
   value: number;
+};
+
+export type SortOptionsType = {
+  label: string;
+  value: string;
 };
 
 export type TodoStatusType = {
   INCOMPLETE: number;
   PROGRESS: number;
   COMPLETE: number;
+};
+
+export type convertSortToQueryType = {
+  [key: string]: string;
 };

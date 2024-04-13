@@ -9,7 +9,7 @@ import NextLink from 'next/link';
 import { TodoType } from '@/types/types';
 import { editTodo } from '@/utils/supabase/actions';
 import { FormSelect } from '../../common/form/FormSelect';
-import { options } from '@/utils/select-status';
+import { todoStatusOptions } from '@/utils/select';
 
 type PropsType = {
   todo: TodoType[];
@@ -73,7 +73,7 @@ export default function EditForm({ todo }: PropsType) {
             <FormSelect
               label='進捗'
               register={register('status')}
-              options={options}
+              options={todoStatusOptions}
             />
             <FormInput
               type='date'
