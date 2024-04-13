@@ -88,15 +88,19 @@ export async function createTodo(formData: CreateFormType) {
   redirect('/todo');
 }
 
-export async function fetchTodo(sort: string) {
+export async function fetchTodo(sort: string, filter: number | string) {
   noStore();
   const query = convertSortToQuery[sort];
   try {
     const supabase = createClient();
-    const { data: todoData, error } = await supabase
-      .from(TODO_TABLE)
-      .select()
-      .order(query, { ascending: query !== 'created_at' ? true : false });
+    let request = supabase.from(TODO_TABLE).select();
+    if (filter !== 'all') {
+      request = request.eq('status', filter);
+    }
+
+    const { data: todoData, error } = await request.order(query, {
+      ascending: query !== 'created_at' ? true : false,
+    });
     return todoData;
   } catch (error) {
     redirect('/error');

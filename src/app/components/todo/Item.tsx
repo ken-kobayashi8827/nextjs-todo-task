@@ -1,5 +1,5 @@
 import { TodoType } from '@/types/types';
-import { Box, Button, Heading, HStack, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Heading, HStack, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import DeleteButton from './button/DeleteButton';
 import StatusSelect from './select/StatusSelect';

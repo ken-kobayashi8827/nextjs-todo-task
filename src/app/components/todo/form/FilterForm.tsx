@@ -1,21 +1,21 @@
 'use client';
 
-import { todoSortOptions } from '@/utils/select';
+import { todoFilterOptions } from '@/utils/select';
 import { Box, FormControl, Select, Text } from '@chakra-ui/react';
 import { ChangeEvent } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
-export default function SortForm() {
+export default function FilterForm() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleChangeSort = (selectedSort: string) => {
+  const handleChangeFilter = (selectedFilter: number | string) => {
     const params = new URLSearchParams(searchParams);
-    if (selectedSort) {
-      params.set('sort', selectedSort);
+    if (selectedFilter) {
+      params.set('filter', selectedFilter.toString());
     } else {
-      params.delete('sort');
+      params.delete('filter');
     }
     replace(`${pathname}?${params.toString()}`);
   };
@@ -24,15 +24,15 @@ export default function SortForm() {
     <Box mb='4'>
       <FormControl display='flex' alignItems='center'>
         <Text mr='2' whiteSpace='nowrap'>
-          並び替え
+          絞り込み
         </Text>
         <Select
           bg='white'
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            handleChangeSort(e.target.value)
+            handleChangeFilter(e.target.value)
           }
         >
-          {todoSortOptions.map((option) => (
+          {todoFilterOptions.map((option) => (
             <option key={option.label} value={option.value}>
               {option.label}
             </option>

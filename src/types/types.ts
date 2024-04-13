@@ -28,3 +28,8 @@ export type TodoStatusType = {
 export type convertSortToQueryType = {
   [key: string]: string;
 };
+
+export type FilterOptionsType = {
+  label: string;
+  value?: number | string;
+};

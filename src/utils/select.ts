@@ -1,5 +1,6 @@
 import {
   convertSortToQueryType,
+  FilterOptionsType,
   SortOptionsType,
   StatusOptionsType,
   TodoStatusType,
@@ -28,7 +29,7 @@ export const todoStatusOptions: StatusOptionsType[] = [
 
 export const todoSortOptions: SortOptionsType[] = [
   {
-    label: '作成日時',
+    label: '-',
     value: 'date',
   },
   {
@@ -45,3 +46,22 @@ export const convertSortToQuery: convertSortToQueryType = {
   deadline: 'end_date',
   progress: 'status',
 };
+
+export const todoFilterOptions: FilterOptionsType[] = [
+  {
+    label: '全て',
+    value: 'all',
+  },
+  {
+    label: '未完了',
+    value: TODO_STATUS.INCOMPLETE,
+  },
+  {
+    label: '進行中',
+    value: TODO_STATUS.PROGRESS,
+  },
+  {
+    label: '完了',
+    value: TODO_STATUS.COMPLETE,
+  },
+];
