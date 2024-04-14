@@ -57,7 +57,6 @@ export async function updateSession(request: NextRequest) {
   // サーバー上でユーザー認証のチェック
   const { data: userData } = await supabase.auth.getUser();
   if (!userData.user) {
-    console.log(request.url);
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 

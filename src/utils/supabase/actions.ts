@@ -12,15 +12,6 @@ import { convertSortToQuery } from '../select';
 
 const TODO_TABLE = 'todos';
 
-export async function getSession() {
-  const supabase = createClient();
-  const { data: userData } = await supabase.auth.getSession();
-  console.log(userData.session);
-  if (!userData.session) {
-    redirect('/auth/login');
-  }
-}
-
 export async function login(formData: LoginFormType) {
   try {
     const supabase = createClient();
@@ -79,7 +70,6 @@ export async function logout() {
 
 export async function createTodo(formData: CreateFormType) {
   try {
-    console.log(formData);
     const supabase = createClient();
     const { data: userData } = await supabase.auth.getUser();
     const { error } = await supabase.from(TODO_TABLE).insert({
