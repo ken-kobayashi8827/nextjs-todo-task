@@ -12,6 +12,15 @@ import { convertSortToQuery } from '../select';
 
 const TODO_TABLE = 'todos';
 
+export async function getSession() {
+  const supabase = createClient();
+  const { data: userData } = await supabase.auth.getSession();
+  console.log(userData.session);
+  if (!userData.session) {
+    redirect('/auth/login');
+  }
+}
+
 export async function login(formData: LoginFormType) {
   try {
     const supabase = createClient();
@@ -54,7 +63,7 @@ export async function signup(formData: SignUpFormType) {
   }
 
   revalidatePath('/', 'layout');
-  redirect('/');
+  redirect('/auth/login');
 }
 
 export async function logout() {
@@ -65,7 +74,7 @@ export async function logout() {
     redirect('/error');
   }
 
-  redirect('/');
+  redirect('/auth/login');
 }
 
 export async function createTodo(formData: CreateFormType) {

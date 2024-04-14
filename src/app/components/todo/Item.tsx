@@ -10,15 +10,23 @@ type PropsType = {
 
 export default function Item({ todo }: PropsType) {
   return (
-    <Box w='100%' pb='3' pl='3' pr='3' mb='3' borderBottom='1px solid black'>
+    <Box
+      w='100%'
+      pb='3'
+      pl='4'
+      pr='3'
+      mb='3'
+      mt='2'
+      borderBottom='1px solid black'
+    >
       <HStack>
         <Heading
           as={NextLink}
           href={`todo/${todo.id}`}
           fontSize='2xl'
           fontWeight='bold'
-          p='3'
           w='100%'
+          _hover={{ opacity: '0.8', transition: 'opacity 0.3s ease-in-out' }}
         >
           {todo.title}
         </Heading>

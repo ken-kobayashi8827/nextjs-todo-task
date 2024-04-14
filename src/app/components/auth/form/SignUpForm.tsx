@@ -88,7 +88,13 @@ export default function SignUpForm() {
             </Button>
           </form>
         </FormProvider>
-        <Button as={NextLink} href='/' w='100%' colorScheme='blue' mt='3'>
+        <Button
+          as={NextLink}
+          href='/auth/login'
+          w='100%'
+          colorScheme='blue'
+          mt='3'
+        >
           ログインページへ
         </Button>
       </Box>

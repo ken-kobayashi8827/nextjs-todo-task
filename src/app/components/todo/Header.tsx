@@ -18,7 +18,13 @@ export default function Header() {
       p='3'
       mb='2'
     >
-      <Heading size='lg' color='white'>
+      <Heading
+        as={NextLink}
+        href='/todo'
+        size='lg'
+        color='white'
+        _hover={{ opacity: '0.8', transition: 'opacity 0.3s ease-in-out' }}
+      >
         【課題】Nextjs Todoリスト
       </Heading>
       <HStack>
